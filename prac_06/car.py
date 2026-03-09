@@ -1,6 +1,5 @@
 """CP1404/CP5632 Practical - Car class example."""
 
-
 class Car:
     """Represent a Car object."""
 
@@ -10,13 +9,14 @@ class Car:
         name: string, reference name for car
         fuel: float, one unit of fuel drives one kilometre
         """
-        self.name = name
+        self.name = name  # NEW: Added name field
         self.fuel = fuel
-        self._odometer = 0
+        self.odometer = 0
 
     def __str__(self):
-        """Return a string representation of the Car object."""
-        return f"{self.name}, fuel={self.fuel}, odometer={self._odometer}"
+        """Return a string representation of a Car object."""
+        # NEW: Added __str__ method as requested
+        return f"{self.name}, fuel={self.fuel}, odometer={self.odometer}"
 
     def add_fuel(self, amount):
         """Add amount to the car's fuel."""
@@ -26,12 +26,12 @@ class Car:
         """Drive the car a given distance.
 
         Drive given distance if car has enough fuel
-        or drive until fuel runs out return the distance actually driven.
+        or drive until fuel depletes return the distance actually driven.
         """
         if distance > self.fuel:
             distance = self.fuel
             self.fuel = 0
         else:
             self.fuel -= distance
-        self._odometer += distance
+        self.odometer += distance
         return distance
